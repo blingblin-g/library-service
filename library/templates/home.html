@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+</head>
+<body>
+	<h1>Home.html</h1>
+	{% for title in titles %}
+	<p>{{ title }}</p>
+	{% endfor %}
+	<form action='/register' method="POST">
+		id <input type="text" name="user_id">
+		password <input type="password" name="user_pw">
+		<input type="submit">
+	</form>
+	<a href="{{ url_for('elicer') }}">Go to elice page</a>
+</body>
+</html>
