@@ -1,7 +1,7 @@
 .venv
 venv/
-./app/__pycache__/
-./instance/
+__pycache__/
+instance/
 
 pyvenv.cfg
 .DS_Store
