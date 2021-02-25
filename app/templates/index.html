@@ -1,0 +1,22 @@
+{% extends "layout.html" %} {% block content %}
+<h1 class="title">
+  Flask Login Example
+</h1>
+<h2 class="subtitle">
+  Welcome to Fake Library
+</h2>
+<div>
+  {% for book in books %}
+    <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+    <h4>{{ book.name }}</h4>
+    <div>평점 : {{ book.rating }}</div>
+    <div>대출 가능한 도서 : {{ book.stock }}</div>
+    <form action="" method="GET">
+      <label for="name_txt">text: </label>
+      <input type="button" value="대여하기" onclick="alert('대출 완료!')">
+    </form>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
