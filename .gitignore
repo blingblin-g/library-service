@@ -1,6 +1,6 @@
 .venv
 venv/
-./__pycache__/
+./app/__pycache__/
 ./instance/
 
 pyvenv.cfg
