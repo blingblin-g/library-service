@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1 class="title">
+  BOOK INFO
+</h1>
+<div class="book">
+	<img src="../{{ book.image_path }}" alt="{{ book.name }}">
+	<table>
+		<tbody>
+			<tr>
+				<th>책이름</th>
+				<td>{{ book.name }}</td>
+			</tr>
+			<tr>
+				<th>출판사</th>
+				<td>{{ book.publisher }}</td>
+			</tr>
+			<tr>
+				<th>저자</th>
+				<td>{{ book.author }}</td>
+			</tr>
+			<tr>
+				<th>출간일</th>
+				<td>{{ book.published_at }}</td>
+			</tr>
+			<tr>
+				<th>페이지수</th>
+				<td>{{ book.page_count }}</td>
+			</tr>
+			<tr>
+				<th>ISBN</th>
+				<td>{{ book.isbn }}</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="intro">
+		<h1>책소개</h1>
+		<article>
+			{{ book.description }}
+		</article>
+	</div>
+	<div class="comment">
+		나중에 채울건데 뭐넣을거냐면 user, book, 댓글의 혼종 테이블에서 데이터를 가져와서 뿌려
+		<form action="/{{ book.id }}" method="POST">
+			<input type="text">
+			<input type="button" value="댓글 달기" >
+		</form>
+	</div>
+</div>
+
+{% endblock %}
