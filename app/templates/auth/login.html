@@ -1,33 +1,20 @@
 {% extends "layout.html" %} {% block content %}
 <div class="column is-4 is-offset-4">
-  <h3 class="title">Sign Up</h3>
+  <h3 class="title">Login</h3>
   <div class="box">
     {% with messages = get_flashed_messages() %} {% if messages %}
     <div class="notification is-danger">
-      {{ messages[0] }}. Go to
-      <a href="{{ url_for('login') }}">login page</a>.
+      {{ messages[0] }}
     </div>
     {% endif %} {% endwith %}
-    <form method="POST" action="/signup">
+    <form method="POST" action="/auth/login">
       <div class="field">
         <div class="control">
           <input
             class="input is-large"
             type="email"
             name="email"
-            placeholder="Email"
-            autofocus=""
-          />
-        </div>
-      </div>
-
-      <div class="field">
-        <div class="control">
-          <input
-            class="input is-large"
-            type="text"
-            name="name"
-            placeholder="Name"
+            placeholder="Your Email"
             autofocus=""
           />
         </div>
@@ -40,22 +27,12 @@
             type="password"
             name="password"
             minlength="8"
-            placeholder="Password"
-          />
-        </div>
-      </div>
-      <div class="field">
-        <div class="control">
-          <input
-            class="input is-large"
-            type="password"
-            name="password-check"
-            placeholder="Password"
+            placeholder="Your Password"
           />
         </div>
       </div>
       <button class="button is-block is-info is-large is-fullwidth">
-        Sign Up
+        Login
       </button>
     </form>
   </div>
