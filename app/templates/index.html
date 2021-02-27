@@ -7,14 +7,17 @@
 </h2>
 <div>
   {% for book in books %}
+  <a href="{{ url_for('book_info.book_info', id=book.id) }}">
     <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
     <h4>{{ book.name }}</h4>
+  </a>
     <div>평점 : {{ book.rating }}</div>
     <div>대출 가능한 도서 : {{ book.stock }}</div>
-    <form action="" method="GET">
-      <label for="name_txt">text: </label>
-      <input type="button" value="대여하기" onclick="alert('대출 완료!')">
+    <form action="/checkout" method="POST">
+      <button name="id" value="{{ book.id }}">대여하기</button>
     </form>
+    <hr>
+    <div style="margin: 20px"></div>
   {% endfor %}
 </div>
 

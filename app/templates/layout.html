@@ -11,6 +11,13 @@
   </head>
 
   <body>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          <script>
+              alert("{{messages[-1]}}")
+          </script>
+      {% endif %}
+      {% endwith %}
     <section class="hero is-primary is-fullheight">
       <div class="hero-head">
         <nav class="navbar">
@@ -29,7 +36,7 @@
                 <a href="{{ url_for('auth.register') }}" class="navbar-item">
                   Sign Up
                 </a>
-                <a href="" class="navbar-item">
+                <a href="{{ url_for('auth.logout') }}" class="navbar-item">
                   Logout
                 </a>
               </div>
