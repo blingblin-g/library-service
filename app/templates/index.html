@@ -14,7 +14,6 @@
     <div>평점 : {{ book.rating }}</div>
     <div>대출 가능한 도서 : {{ book.stock }}</div>
     <form action="/checkout" method="POST">
-      <label for="대여하기"></label>
       <button name="id" value="{{ book.id }}">대여하기</button>
     </form>
     <hr>

@@ -12,6 +12,6 @@ bp = Blueprint('profile', __name__)
 def profile():
 	db = get_db()
 	books = db. execute(
-		'SELECT * FROM book WHERE id in (SELECT book_id FROM profile)'
+		'SELECT * FROM book JOIN profile ON book.id=profile.book_id WHERE profile.user_id=?', (session['user_id'], )
 	).fetchall()
 	return render_template('profile.html', books=books)

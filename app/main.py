@@ -1,6 +1,7 @@
 from flask import (
 	Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
+import datetime
 import sqlite3
 from werkzeug.exceptions import abort
 from app.auth import login_required
@@ -47,7 +48,7 @@ def checkout():
 		'UPDATE book SET stock = stock - 1 WHERE id=? AND stock > 0', (id, )
 	).fetchone()
 	db.execute(
-		'INSERT INTO profile (user_id, book_id, start_date) VALUES (?, ?, CURRENT_TIMESTAMP)', (session['user_id'], id)
+		'INSERT INTO profile (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
 	).fetchone()
 	db.commit()
 	return redirect(url_for('index'))
