@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS book;
+DROP TABLE IF EXISTS profile;
 
 CREATE TABLE user (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -30,4 +31,15 @@ CREATE TABLE book (
   image_path TEXT NOT NULL,
   stock INTEGER NOT NULL,
   rating INTEGER NOT NULL
+);
+
+CREATE TABLE profile (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  book_id INTEGER NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE,
+
+  FOREIGN KEY (user_id) REFERENCES user (id),
+  FOREIGN KEY (book_id) REFERENCES book (id)
 )
