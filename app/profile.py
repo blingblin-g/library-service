@@ -13,7 +13,7 @@ bp = Blueprint('profile', __name__)
 def profile():
 	db = get_db()
 	books = db.execute(
-		'SELECT * FROM book JOIN profile ON book.id=profile.book_id WHERE profile.user_id=? AND profile.end_date IS NULL', (session['user_id'], )
+		'SELECT * FROM book JOIN profile ON book.id=profile.book_id WHERE profile.user_id=?', (session['user_id'], )
 	).fetchall()
 	return render_template('profile.html', books=books)
 
@@ -26,7 +26,10 @@ def return_book():
 		'UPDATE book SET stock = stock + 1 WHERE id=?', (id, )
 	).fetchone()
 	db.execute(
-		'UPDATE profile SET end_date=? WHERE book_id=?', (datetime.datetime.now().strftime('%Y-%m-%d'), id)
+		'UPDATE log SET end_date=? WHERE book_id=?', (datetime.datetime.now().strftime('%Y-%m-%d'), id)
+	).fetchone()
+	db.execute(
+		'DELETE FROM profile WHERE book_id=?', (id, )
 	).fetchone()
 	db.commit()
 	return redirect(url_for('profile'))

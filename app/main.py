@@ -40,17 +40,31 @@ def checkout():
 	ret = db.execute(
 		'SELECT stock FROM book WHERE id=? AND stock > 0', (id, )
 	).fetchone()
-	if ret is None:
-		flash('There is no book anymore!')
+	is_available = db.execute(
+		'SELECT book_id FROM profile WHERE user_id=? AND book_id=?', (session['user_id'], id)
+	).fetchone()
+	print(f'====================={id}=====================')
+	try:
+		if is_available['book_id']:
+			flash('이미 빌린 책입니다!')
+		elif ret is None:
+			flash('There is no book anymore!')
+	except:
+		db.execute(
+			'UPDATE book SET stock = stock - 1 WHERE id=? AND stock > 0', (id, )
+		).fetchone()
+		db.execute(
+			'INSERT INTO profile (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
+		).fetchone()
+		db.execute(
+			'INSERT INTO log (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
+		).fetchone()
+		
+		db.commit()
+		
 	#elif not is_available(id):
 	#	flash('You have too many books!')
-	db.execute(
-		'UPDATE book SET stock = stock - 1 WHERE id=? AND stock > 0', (id, )
-	).fetchone()
-	db.execute(
-		'INSERT INTO profile (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
-	).fetchone()
-	db.commit()
+
 	return redirect(url_for('index'))
 
 #@bp.route('/create', methods=('GET', 'POST'))
