@@ -14,7 +14,7 @@
     <div>대여일 : {{ book.start_date}}</div>
     <div>평점 : {{ book.rating }}</div>
     <form action="/return" method="POST">
-      <button name="id" value="{{ book.id }}">반납하기</button>
+      <button name="id" value="{{ book.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
     </form>
     <hr>
     <div style="margin: 20px"></div>

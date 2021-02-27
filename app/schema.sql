@@ -38,7 +38,7 @@ CREATE TABLE profile (
   user_id INTEGER NOT NULL,
   book_id INTEGER NOT NULL,
   start_date DATE NOT NULL,
-  end_date DATE,
+  end_date DATE DEFAULT NULL,
 
   FOREIGN KEY (user_id) REFERENCES user (id),
   FOREIGN KEY (book_id) REFERENCES book (id)
