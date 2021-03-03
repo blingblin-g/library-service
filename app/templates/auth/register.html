@@ -5,7 +5,7 @@
     {% with messages = get_flashed_messages() %} {% if messages %}
     <div class="notification is-danger">
       {{ messages[0] }}. Go to
-      <a href="{{ url_for('login') }}">login page</a>.
+      <a href="{{ url_for('auth.login') }}">login page</a>.
     </div>
     {% endif %} {% endwith %}
     <form method="POST" action="/auth/register">
@@ -17,7 +17,8 @@
             name="email"
             placeholder="Email"
             autofocus=""
-          />
+          /> 
+          <!-- 빨간박스 어디서추가되나요? -->
         </div>
       </div>
 

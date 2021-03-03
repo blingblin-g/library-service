@@ -8,16 +8,12 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
     />
+<!-- css load -->
+    <link rel="stylesheet" type="text/css" href="../static/style.css" />
   </head>
 
   <body>
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          <script>
-              alert("{{messages[-1]}}")
-          </script>
-      {% endif %}
-      {% endwith %}
+
     <section class="hero is-primary is-fullheight">
       <div class="hero-head">
         <nav class="navbar">
