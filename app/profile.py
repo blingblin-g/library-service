@@ -26,10 +26,7 @@ def return_book():
 		'UPDATE book SET stock = stock + 1 WHERE id=?', (id, )
 	).fetchone()
 	db.execute(
-		'UPDATE log SET end_date=? WHERE book_id=?', (datetime.datetime.now().strftime('%Y-%m-%d'), id)
-	).fetchone()
-	db.execute(
-		'DELETE FROM profile WHERE book_id=?', (id, )
+		'UPDATE profile SET end_date=? WHERE book_id=? AND user_id=?', (datetime.datetime.now().strftime('%Y-%m-%d'), id, session['user_id'])
 	).fetchone()
 	db.commit()
 	return redirect(url_for('profile'))

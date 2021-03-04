@@ -40,11 +40,20 @@
 		</article>
 	</div>
 	<div class="comments">
-		<form action="/{{ book.id }}" method="POST">
-			<input type="text" name="title">
-			<input type="text" name="body">
-			<input type="button" name="comment" value="댓글 달기" >
-		</form>
+		<div class="output_data">
+			{{ post.author_id }}
+		</div>
+		<div class="input_data">
+			<form action="/{{ book.id }}" method="POST">
+				<div>
+					제목 : <input type="text" name="title">
+				</div>
+				<div>
+					내용 : <input type="text" name="body">
+				</div>
+				<input type="button" name="comment" value="댓글 달기" >
+			</form>
+		</div>
 	</div>
 </div>
 

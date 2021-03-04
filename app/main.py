@@ -20,7 +20,7 @@ def index():
 #	db = get_db()
 #	print(session['user_id'])
 #	ret = db.execute(
-#		'SELECT count(book_id) as id FROM profile WHERE user_id=?', (session['user_id'], )
+#		'SELECT count(book_id) FROM profile WHERE user_id=?', (session['user_id'], )
 #	)
 #	ret.row_factory = sqlite3.Row
 #	print(f"==============ret:{ret}================")
@@ -37,18 +37,17 @@ def index():
 def checkout():
 	id = request.form['id']
 	db = get_db()
-	ret = db.execute(
+	stock = db.execute(
 		'SELECT stock FROM book WHERE id=? AND stock > 0', (id, )
 	).fetchone()
 	is_available = db.execute(
-		'SELECT book_id FROM profile WHERE user_id=? AND book_id=?', (session['user_id'], id)
+		'SELECT book_id FROM profile WHERE user_id=? AND book_id=? AND end_date is NULL', (session['user_id'], id)
 	).fetchone()
-	print(f'====================={id}=====================')
 	try:
 		if is_available['book_id']:
-			flash('이미 빌린 책입니다!')
-		elif ret is None:
-			flash('There is no book anymore!')
+			flash('이미 대출 중입니다!')
+		elif stock is None:
+			flash('더이상 빌릴 수 있는 책이 없습니다.')
 	except:
 		db.execute(
 			'UPDATE book SET stock = stock - 1 WHERE id=? AND stock > 0', (id, )
@@ -56,10 +55,6 @@ def checkout():
 		db.execute(
 			'INSERT INTO profile (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
 		).fetchone()
-		db.execute(
-			'INSERT INTO log (user_id, book_id, start_date) VALUES (?, ?, ?)', (session['user_id'], id, datetime.datetime.now().strftime('%Y-%m-%d'))
-		).fetchone()
-		
 		db.commit()
 		
 	#elif not is_available(id):

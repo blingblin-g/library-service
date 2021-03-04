@@ -16,7 +16,9 @@ def create():
 		body = request.form['body']
 		error = None
 		if not title:
-			error = 'Title is required.'
+			error = '제목이 없습니다.'
+		elif not body:
+			error = '내용이 없습니다.'
 		if error is not None:
 			flash(error)
 		else:
@@ -25,6 +27,9 @@ def create():
 				'INSERT INTO post (title, body, author_id)'
 				' VALUES (?, ?, ?)',
 				(title, body, g.user['id'])
+			)
+			post = db.execute(
+				'SELECT * FROM post JOIN user ON author_id=?', (session[user_id])
 			)
 			db.commit()
 			return redirect(url_for('blog.index'))
@@ -51,6 +56,10 @@ def update(id):
 		title = request.form['title']
 		body = request.form['body']
 		error = None
+		if not title:
+			error = '제목이 없습니다.'
+		elif not body:
+			error = '내용이 없습니다.'
 		if error is not None:
 			flash(error)
 		else:
