@@ -1,37 +1,37 @@
 {% extends "layout.html" %} {% block content %}
 <h1 class="title">
-  Flask Login Example
+  Elice Library
 </h1>
 <h2 class="subtitle">
   Welcome to Fake Library
 </h2>
+<h3> 대여중 </h3>
 <div>
-  {% for log in logs %}
-  <a href="{{ url_for('log_info.log_info', id=log.id) }}">
-    <img src="{{ log.image_path }}" alt="{{ log.name }}" width=100px>
-    <h4>{{ log.name }}</h4>
+  {% for book in books %}
+  <a href="{{ url_for('book_info.book_info', id=book.id) }}">
+    <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+    <h4>{{ book.name }}</h4>
   </a>
-    <div>대여일 : {{ log.start_date}}</div>
-    <div>평점 : {{ log.rating }}</div>
+    <div>대여일 : {{ book.start_date }}</div>
+    <div>평점 : {{ book.rating }}</div>
     <form action="/return" method="POST">
-      <button name="id" value="{{ log.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
+      <button name="id" value="{{ book.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
     </form>
     <hr>
     <div style="margin: 20px"></div>
   {% endfor %}
 </div>
+
 <hr>
+<h3> 대여 기록 </h3>
 <div>
-  {% for book in books %}
-  <a href="{{ url_for('book_info.book_info', id=book.id) }}">
-    <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+  {% for log in logs %}
+  <a href="{{ url_for('book_info.book_info', id=log.book_id) }}">
+    <img src="{{ log.image_path }}" alt="{{ log.name }}" width=100px>
     <h4>{{ log.name }}</h4>
   </a>
     <div>대여일 : {{ log.start_date}}</div>
     <div>평점 : {{ log.rating }}</div>
-    <form action="/return" method="POST">
-      <button name="id" value="{{ log.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
-    </form>
     <hr>
     <div style="margin: 20px"></div>
   {% endfor %}
