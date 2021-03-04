@@ -1,0 +1,41 @@
+{% extends "layout.html" %} {% block content %}
+<h1 class="title">
+  Flask Login Example
+</h1>
+<h2 class="subtitle">
+  Welcome to Fake Library
+</h2>
+<div>
+  {% for log in logs %}
+  <a href="{{ url_for('log_info.log_info', id=log.id) }}">
+    <img src="{{ log.image_path }}" alt="{{ log.name }}" width=100px>
+    <h4>{{ log.name }}</h4>
+  </a>
+    <div>대여일 : {{ log.start_date}}</div>
+    <div>평점 : {{ log.rating }}</div>
+    <form action="/return" method="POST">
+      <button name="id" value="{{ log.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
+    </form>
+    <hr>
+    <div style="margin: 20px"></div>
+  {% endfor %}
+</div>
+<hr>
+<div>
+  {% for book in books %}
+  <a href="{{ url_for('book_info.book_info', id=book.id) }}">
+    <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+    <h4>{{ log.name }}</h4>
+  </a>
+    <div>대여일 : {{ log.start_date}}</div>
+    <div>평점 : {{ log.rating }}</div>
+    <form action="/return" method="POST">
+      <button name="id" value="{{ log.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
+    </form>
+    <hr>
+    <div style="margin: 20px"></div>
+  {% endfor %}
+</div>
+
+
+{% endblock %}
