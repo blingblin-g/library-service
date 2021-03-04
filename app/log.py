@@ -11,8 +11,6 @@ bp = Blueprint('log', __name__, url_prefix='/log')
 def log(id):
 	db = get_db()
 	book = db.execute(
-		'SELECT * FROM book JOIN log ON book.id=log.book_id WHERE profile.user_id=?', (session['user_id'], )
+		'SELECT * FROM book JOIN log ON book.id=log.book_id WHERE log.user_id=?', (session['user_id'], )
 	).fetchone()
-	#if request.method == 'POST':
-	#	댓글 업데이트
-	return render_template('book_info.html', book=book)
+	return render_template('book_info.html', logs=logs)

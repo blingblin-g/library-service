@@ -2,11 +2,11 @@
 <div class="column is-4 is-offset-4">
   <h3 class="title">Login</h3>
   <div class="box">
-    <div class="notification">
     {% with messages = get_flashed_messages() %} {% if messages %}
-      <span>{{ messages[0] }}</span>
-      {% endif %} {% endwith %}
+    <div class="notification is-danger">
+      <span id="error-message">{{ messages[0] }}</span>
     </div>
+    {% endif %} {% endwith %}
     
     <form method="POST" action="/auth/login">
       <div class="field">
