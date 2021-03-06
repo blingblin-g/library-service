@@ -1,6 +1,15 @@
 import os
 
 from flask import Flask
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+
+import config
+
+db = SQLAlchemy()
+migrate = Migrate()
+
+from . import models
 
 def create_app(test_config=None):
 	# create and configure the app
@@ -21,9 +30,14 @@ def create_app(test_config=None):
 		os.makedirs(app.instance_path)
 	except OSError:
 		pass
-	
-	from . import db
+
+	app.config.from_object(config)
+
+	# ORM
 	db.init_app(app)
+	migrate.init_app(app, db)
+
+	from . import models
 
 	from . import auth
 	app.register_blueprint(auth.bp)
