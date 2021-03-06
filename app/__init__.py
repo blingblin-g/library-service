@@ -40,5 +40,6 @@ def create_app(test_config=None):
 
 	from . import book_info
 	app.register_blueprint(book_info.bp)
+	app.add_url_rule("/", endpoint="book_info")
 	
 	return app
