@@ -10,6 +10,7 @@ import datetime
 bp = Blueprint('book_info', __name__, url_prefix='/book_info')
 
 @bp.route('/<id>', methods=('GET', 'POST'))
+@login_required
 def book_info(id):
 	db = get_db()
 	book = db.execute(
@@ -114,11 +115,11 @@ def delete_comment():
 		'SELECT AVG(star) FROM comments WHERE book_id=?', (id, )
 	).fetchone()
 	print("---------------------------here=======================================")
-	for i in avg_star:
-		print(i)
+	print(avg_star[0])
+	print(id)
 	print("---------------------------or here=======================================")
 	db.execute(
-		'UPDATE book SET rating=? WHERE id=?', (avg_star[0], id)
+		'UPDATE book SET rating=? WHERE id=?', (avg_star, id)
 	).fetchone()
 	db.commit()
 	#comment = Comments.query.get(Comments.book_id==id, Comments.user_id==session['user_id'])
