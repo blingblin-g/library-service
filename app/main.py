@@ -5,7 +5,8 @@ import datetime
 import sqlite3
 from werkzeug.exceptions import abort
 from app.auth import login_required
-from app.db import get_db
+#from app.db import get_db
+from app import db
 from app.models import Book
 
 bp = Blueprint('main', __name__)
@@ -17,6 +18,9 @@ def index():
 	#	'SELECT id, name, publisher, author, published_at, page_count, isbn, description, image_path, stock, rating FROM book'
 	#).fetchall()
 	books = Book.query.all()
+	print("--------------------------------------")
+	print(books)
+	print("--------------------------------------")
 	return render_template('index.html', books=books)
 
 #def is_available(id):

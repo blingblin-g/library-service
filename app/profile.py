@@ -3,8 +3,10 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 from app.auth import login_required
-from app.db import get_db
+#from app.db import get_db
 import datetime
+
+from app.models import Profile, Book
 
 bp = Blueprint('profile', __name__)
 
@@ -15,8 +17,10 @@ def profile():
 	#books = db.execute(
 	#	'SELECT * FROM book JOIN profile ON book.id=profile.book_id WHERE profile.user_id=?', (session['user_id'], )
 	#).fetchall()
-	profile = Profile.query.filter(Profile.user_id == session['user_id'])
-	books = Book.query.filter(Book.id == profile.book_id)
+	books = []
+	profile = Profile.query.filter(Profile.user_id == session['user_id']).first()
+	if profile:
+		books = Book.query.filter(Book.id == profile.book_id).first()
 	return render_template('profile.html', books=books)
 
 @bp.route('/return', methods=('GET', 'POST'))

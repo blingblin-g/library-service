@@ -3,7 +3,9 @@ from flask import (
 )
 from werkzeug.exceptions import abort
 from app.auth import login_required
-from app.db import get_db
+#from app.db import get_db
+from app.models import Book
+from app import db
 
 bp = Blueprint('book_info', __name__, url_prefix='/book_info')
 
@@ -63,9 +65,9 @@ def update_comment(id):
 		comment.date = datetime.datetime.now().strftime('%Y-%m-%d')
 		db.session.commit()
 
+#	댓글을 지웠을 때 D
+	#	프론트에서 댓글이 있을 경우에만 옆에다가 삭제 버튼이 뜨는거죠 (POST)
 def delete_comment(id):
 	comment = Comments.query.get(Comments.book_id==id, Comments.user_id==session['user_id'])
 	db.session.delete(comment)
 	db.session.commit()
-#	댓글을 지웠을 때 D
-	#	프론트에서 댓글이 있을 경우에만 옆에다가 삭제 버튼이 뜨는거죠 (POST)
