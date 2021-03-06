@@ -40,6 +40,5 @@ def create_app(test_config=None):
 
 	from . import book_info
 	app.register_blueprint(book_info.bp)
-
 	
 	return app
