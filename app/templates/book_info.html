@@ -39,12 +39,21 @@
 			{{ book.description }}
 		</article>
 	</div>
-	<div class="comment">
-		나중에 채울건데 뭐넣을거냐면 user, book, 댓글의 혼종 테이블에서 데이터를 가져와서 뿌려
-		<form action="/{{ book.id }}" method="POST">
-			<input type="text">
-			<input type="button" name="comment" value="댓글 달기" >
-		</form>
+	<div class="comments">
+		<div class="output_data">
+			{{ post.author_id }}
+		</div>
+		<div class="input_data">
+			<form action="/{{ book.id }}" method="POST">
+				<div>
+					제목 : <input type="text" name="title">
+				</div>
+				<div>
+					내용 : <input type="text" name="body">
+				</div>
+				<input type="button" name="comment" value="댓글 달기" >
+			</form>
+		</div>
 	</div>
 </div>
 
