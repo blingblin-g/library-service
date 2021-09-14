@@ -1,41 +1,46 @@
 {% extends "layout.html" %} {% block content %}
 
-<h3> 대여중 </h3>
-<div>
+<div class="rental">
+  <h3 class="rental__title"> 대여중 </h3>
   <div>
-    {% for book in books %}
-    {% if book.end_date is none %}
-    <a href="{{ url_for('book_info.book_info', id=book.id) }}">
-      <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
-      <h4>{{ book.name }}</h4>
-    </a>
-      <div>대여일 : {{ book.start_date }}</div>
-      <div>평점 : {{ book.rating }}</div>
-      <form action="/return" method="POST">
-        <button name="id" value="{{ book.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
-      </form>
-      <hr>
-      <div style="margin: 20px"></div>
-      {% endif %}
-    {% endfor %}
-  </div>
-
-  </div>
+    <div class="rental__container">
+      {% for book in books %}
+      {% if book.end_date is none %}
+      <div class="rental__item">
+      <a href="{{ url_for('book_info.book_info', id=book.id) }}">
+        <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+        <h4>{{ book.name }}</h4>
+      </a>
+        <div>대여일 : {{ book.start_date }}</div>
+        <div>평점 : {{ book.rating }}</div>
+        <form action="/return" method="POST">
+          <button class="books__button" name="id" value="{{ book.id }}" onclick="alert('반납되었습니다!')">반납하기</button>
+        </form>
+      </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    </div>
+</div>
 
 <hr>
-<h3> 대여 기록 </h3>
-<div>
-  {% for book in books %}
-  <a href="{{ url_for('book_info.book_info', id=book.book_id) }}">
-    <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
-    <h4>{{ book.name }}</h4>
-  </a>
-    <div>대여일 : {{ book.start_date }}</div>
-    <div>반납일 : {{ book.end_date }}</div>
-    <hr>
-    <div style="margin: 20px"></div>
-  {% endfor %}
-</div>
+
+<div class="log">
+  <h3 class="log__title"> 대여 기록 </h3>
+    <div class="log__container">
+      {% for book in books %}
+      <div class="log__item">
+      <a href="{{ url_for('book_info.book_info', id=book.book_id) }}">
+        <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
+        <h4>{{ book.name }}</h4>
+      </a>
+        <div>대여일 : {{ book.start_date }}</div>
+        <div>반납일 : {{ book.end_date }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
 
 
 {% endblock %}

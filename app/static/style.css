@@ -231,3 +231,29 @@ button {
 	background-color: black;
 	color: white;
 }
+
+
+/*profile page*/
+
+.rental__img {
+	width: 100px;
+	height: 150px;
+}
+
+.rental__title, .log__title {
+	margin: 20px;
+}
+
+.rental__container, .log__container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(auto, 200px);
+	gap: 30px;
+	margin-bottom: 50px;
+}
+
+.rental__item, .log__item {
+	align-self: center;
+	text-align: center;
+	align-items: stretch;
+}
