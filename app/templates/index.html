@@ -1,28 +1,23 @@
 {% extends "layout.html" %} {% block content %}
-<h1 class="title">
-  Elice Library
-</h1>
-<h2 class="subtitle">
-  Welcome to Fake Library
-</h2>
+
 {% with messages = get_flashed_messages() %} {% if messages %}
 <div class="notification is-danger">
   <span id="error-message">{{ messages[0] }}</span>
 </div>
 {% endif %} {% endwith %}
-<div>
+<div class="books__container">
   {% for book in books %}
+  <div class="books__item">
   <a href="{{ url_for('book_info.book_info', id=book.id) }}">
     <img src="{{ book.image_path }}" alt="{{ book.name }}" width=100px>
     <h4>{{ book.name }}</h4>
   </a>
-    <div>평점 : {{ book.rating }}</div>
-    <div>대출 가능한 도서 : {{ book.stock }}</div>
-    <form action="/checkout" method="POST">
-      <button name="id" value="{{ book.id }}">대여하기</button>
-    </form>
-    <hr>
-    <div style="margin: 20px"></div>
+  <div>평점 : {{ book.rating }}</div>
+  <div>대출 가능한 도서 : {{ book.stock }}</div>
+  <form action="/checkout" method="POST">
+    <button class="books__button" name="id" value="{{ book.id }}">대여하기</button>
+  </form>
+  </div>
   {% endfor %}
 </div>
 

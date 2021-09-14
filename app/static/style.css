@@ -1,0 +1,82 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+a:hover {
+	color: black;
+}
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+}
+
+.navbar__title {
+	display: flex;
+}
+
+.navbar__main-title {
+	font-size: 34px;
+	font-weight: bold;
+	color: black;
+	margin: 10px
+}
+
+.navbar__subtitle {
+	font-size: 20px;
+	color: gray;
+}
+
+.navbar__container {
+	margin: 20px;
+}
+
+.navbar__item {
+	margin: 20px;
+	text-decoration: none;
+	color: black;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 5px;
+
+}
+
+.navbar__item:hover {
+	border: 1px solid gray;
+	border-radius: 20px;
+	color: white;
+	background-color: gray;
+	padding: 5px;
+}
+
+.books__container {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(auto, 200px);
+	margin: 50px 20px 0 20px;
+}
+
+.books__item {
+	border: 1px dotted gray;
+	text-align: center;
+	padding: 10px;
+	border-radius: 20px;
+}
+
+.books__item:hover {
+	border-radius: 20px;
+	background-color: gray;
+}
+
+.books__button {
+	border: none;
+	border-radius: 5px;
+	align-self: end;
+}

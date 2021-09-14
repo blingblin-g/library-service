@@ -6,49 +6,43 @@
     <title>Elice | Library</title>
     <!-- css load -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
-    />
   </head>
-
   <body>
-
     <section class="hero is-primary is-fullheight">
-      <div class="hero-head">
-        <nav class="navbar">
-          <div class="container">
-            <div id="navbarMenuHeroA" class="navbar-menu">
-              <div class="navbar-end">
-                <a href="{{ url_for('index') }}" class="navbar-item">
-                  Home
-                </a>
-                <a href="{{ url_for('profile') }}" class="navbar-item">
-                  Profile
-                </a>
-                {% if g.user %}
-                <a href="{{ url_for('auth.logout') }}" class="navbar-item">
-                  Logout
-                </a>
-                {% else %}
-                <a href="{{ url_for('auth.login') }}" class="navbar-item">
-                  Login
-                </a>
-                <a href="{{ url_for('auth.register') }}" class="navbar-item">
-                  Sign Up
-                </a>
-                {% endif %}
-              </div>
+      <nav class="navbar">
+        <div class="navbar__title">
+          <h2 class="navbar__main-title">
+            Elice Library
+          </h2>
+          <h3 class="navbar__subtitle">
+            Welcome to Fake Library
+          </h3>
+        </div>
+        <div class="navbar__container">
+            <a href="{{ url_for('index') }}" class="navbar__item">
+              Home
+            </a>
+            <a href="{{ url_for('profile') }}" class="navbar__item">
+              Profile
+            </a>
+            {% if g.user %}
+            <a href="{{ url_for('auth.logout') }}" class="navbar__item">
+              Logout
+            </a>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}" class="navbar__item">
+              Login
+            </a>
+            <a href="{{ url_for('auth.register') }}" class="navbar__item">
+              Sign Up
+            </a>
+            {% endif %}
             </div>
-          </div>
-        </nav>
-      </div>
+      </nav>
 
-      <div class="hero-body">
-        <div class="container has-text-centered">
+        <div class="books">
           {% block content %} {% endblock %}
         </div>
-      </div>
     </section>
   </body>
 </html>
