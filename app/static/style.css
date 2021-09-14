@@ -8,9 +8,17 @@ a {
 	color: black;
 }
 
-a:hover {
-	color: black;
+input {
+	border: none;
+	height: 50px;
 }
+
+button {
+	border: none;
+}
+
+/*main page*/
+
 
 .navbar {
 	display: flex;
@@ -22,7 +30,7 @@ a:hover {
 }
 
 .navbar__main-title {
-	font-size: 34px;
+	font-size: 40px;
 	font-weight: bold;
 	color: black;
 	margin: 10px
@@ -72,11 +80,154 @@ a:hover {
 
 .books__item:hover {
 	border-radius: 20px;
-	background-color: gray;
+	background-color: rgb(184, 184, 184);
 }
 
 .books__button {
 	border: none;
 	border-radius: 5px;
 	align-self: end;
+	width: 10em;
+	height: 2em;
+}
+
+.books__button:hover {
+	background-color: black;
+	color:white;
+}
+
+/*login page*/
+
+.login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 80vh;
+}
+
+.login__container {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.login__btns {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.login__inputs {
+	display: flex;
+	flex-direction: column;
+}
+
+.login__input {
+	width: 20em;
+	margin: 10px;
+	border-radius: 10px;
+	border: 1px dotted gray;
+}
+
+.button {
+	width: 20em;
+	height: 50px;
+	background-color: gray;
+	margin: 10px;
+	padding: 10px;
+	color: black;
+	font-weight: bold;
+	border-radius: 20px;
+}
+
+.button:hover {
+	background-color: black;
+	color: white;
+}
+
+/*signup page*/
+
+.signup {
+	display: flex;
+	height: 80vh;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.signup__container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.signup__input {
+	width: 20em;
+	margin: 10px;
+	border: 1px dotted gray;
+	border-radius: 10px;
+
+}
+
+/*detail page*/
+
+.title {
+	margin: 20px;
+}
+
+.book__info {
+	display: flex;
+	justify-content: space-around;
+}
+
+.book__info__contents {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.book__img {
+	width: 20em;
+	height: 25em;
+}
+
+.book__category {
+	display: flex;
+	width: 500px;
+}
+
+.book__category__title {
+	border-top: 2px dotted gray;
+	margin: 10px;
+}
+
+.book__category__content {
+	border-top: 2px dotted gray;
+	padding: 5px;
+	width: 400px;
+	margin: 10px;
+	font-weight: 500;
+}
+
+.comment {
+	width: 30em;
+}
+
+.comment__btn {
+	background-color: gray;
+	border-radius: 10px;
+	width: 50px;
+	height: 50px;
+	transform: translateY(-20px);
+}
+
+.comment__btn:hover {
+	background-color: black;
+	color: white;
 }
