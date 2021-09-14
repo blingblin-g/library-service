@@ -4,6 +4,8 @@ Jinja2, Flask, sqlite
 
 https://www.notion.so/c08a19c7140a44aea200700293f895d0
 
+2021.09.14(화) 스타일  변경하였습니다!
+
 ### 로그인 페이지
 <img width="1225" alt="스크린샷 2021-09-14 오후 7 12 17" src="https://user-images.githubusercontent.com/60090391/133239379-cc4fa08a-a819-4d4c-88d3-1556b27b3968.png">
 
