@@ -4,7 +4,8 @@ Jinja2, Flask, sqlite
 
 ### 실행 방법
 
-```git clone https://github.com/blingblin-g/library-service.git
+```
+git clone https://github.com/blingblin-g/library-service.git
 flask run
 ```
 
