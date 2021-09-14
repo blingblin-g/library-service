@@ -2,6 +2,12 @@
 
 Jinja2, Flask, sqlite
 
+### 실행 방법
+
+```git clone https://github.com/blingblin-g/library-service.git
+flask run
+```
+
 https://www.notion.so/c08a19c7140a44aea200700293f895d0
 
 2021.09.14(화) 스타일  변경하였습니다!
