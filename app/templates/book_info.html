@@ -7,21 +7,21 @@
 	<div class="book__img-container">
 		<img class="book__img" src="../{{ book.image_path }}" alt="{{ book.name }}">
 		<div class="comments">
-			<div class="output_data">
-				{% for comment in comments %}
-				<div>
-					이름 : {{ comment.username }} 별 : {{ comment.star }}
-				</div>
-				<div>
-					{{ comment.body }}
-				</div>
-				<div>
+			{% for comment in comments %}
+			<div class="comments__content">
+				<div class="comments__info">
+					이름 : {{ comment.username }}					
+					별 : {{ comment.star }}
+
 					<form action="/book_info/{{book.id}}/delete/{{comment.id}}" method="POST">
 						<button name="delete">삭제</button>
 					</form>
 				</div>
-				{% endfor %}
+				<div>
+					{{ comment.body }}
+				</div>
 			</div>
+			{% endfor %}
 			<div>
 				{% with messages = get_flashed_messages() %} {% if messages %}
 				<div class="notification is-danger">

@@ -96,6 +96,12 @@ button {
 	color:white;
 }
 
+.rate-area {
+	margin-left: 0;
+	padding: 0px;
+}
+
+
 /*login page*/
 
 .login {
@@ -192,6 +198,10 @@ button {
 	align-items: center;
 }
 
+.book__img-container {
+	width: 30%;
+}
+
 .book__img {
 	width: 20em;
 	height: 25em;
@@ -199,7 +209,7 @@ button {
 
 .book__category {
 	display: flex;
-	width: 500px;
+	width: 100%;
 }
 
 .book__category__title {
@@ -216,20 +226,31 @@ button {
 }
 
 .comment {
-	width: 30em;
+	width: 80%;
+	height: 50px;
 }
 
 .comment__btn {
-	background-color: gray;
+	background-color: #424242;
 	border-radius: 10px;
 	width: 50px;
 	height: 50px;
-	transform: translateY(-20px);
+	color: white;
+	transform: translateY(-30px);
 }
 
 .comment__btn:hover {
 	background-color: black;
 	color: white;
+}
+
+.comments__content {
+	padding: 10px;
+	width: 50%;
+}
+
+.comments__info {
+	display: flex;
 }
 
 
