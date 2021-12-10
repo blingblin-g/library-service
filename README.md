@@ -2,12 +2,17 @@
 
 Jinja2, Flask, sqlite
 
-### 실행 방법
+## 실행 방법
+- 리포지토리 클론
 
 ```
 git clone https://github.com/blingblin-g/library-service.git
+```
+- 실행
+```
 flask run
 ```
+
 
 ### 업데이트 내역
 
