@@ -17,6 +17,17 @@ button {
 	border: none;
 }
 
+.notification {
+	margin: 5px;
+	padding: 20px;
+	background-color: white;
+	border: 2px dotted black;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+}
+
 /*main page*/
 
 
@@ -225,8 +236,12 @@ button {
 	font-weight: 500;
 }
 
+.comments {
+	width: 50%;
+}
+
 .comment {
-	width: 80%;
+	width: 70%;
 	height: 50px;
 }
 
@@ -245,12 +260,45 @@ button {
 }
 
 .comments__content {
+	margin: 20px;
 	padding: 10px;
-	width: 50%;
+	width: 70%;
+	border: 1px solid #424242;
+	border-radius: 15px;
 }
 
-.comments__info {
+.comments__content__header {
 	display: flex;
+	width: 100%;
+}
+
+.comments__content__info {
+	display: flex;
+	justify-content: space-between;
+	width: 75%;
+	padding: 15px;
+	/* border: 1px solid #424242; */
+	border-radius: 10px;
+
+}
+
+.comments_delete {
+	width: 50px;
+	margin-left: 20%;
+	height: 50px;
+	background-color: #424242;
+	color: white;
+	border-radius: 10px;
+}
+
+
+.comments__content__body {
+	/* border: 1px solid #424242; */
+	border-radius: 10px;
+	padding: 15px;
+	margin-top: 15px;
+	width: 95%;
+
 }
 
 
