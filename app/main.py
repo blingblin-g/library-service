@@ -16,22 +16,6 @@ def index():
 	).fetchall()
 	return render_template('index.html', books=books)
 
-#def is_available(id):
-#	db = get_db()
-#	print(session['user_id'])
-#	ret = db.execute(
-#		'SELECT count(book_id) FROM profile WHERE user_id=?', (session['user_id'], )
-#	)
-#	ret.row_factory = sqlite3.Row
-#	print(f"==============ret:{ret}================")
-#	#if ret >= 3:
-#	#	print("============================================요기냐?")
-#	#	return False
-#	for i in ret.fetchall():
-#		print(f"=========================={i}========")
-#	print("===============================================조기냐?")
-#	return True
-
 @bp.route('/checkout', methods=('POST', ))
 @login_required
 def checkout():

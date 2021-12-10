@@ -16,17 +16,21 @@
 					{{ comment.body }}
 				</div>
 				<div>
-					<form action="/book_info/update" method="POST">
-						<button name="edit" value={{ book.id }}>수정</button>
-					</form>
-					<form action="/book_info/delete" method="POST">
-						<button name="delete" value={{ book.id }}>삭제</button>
+					<form action="/book_info/{{book.id}}/delete/{{comment.id}}" method="POST">
+						<button name="delete">삭제</button>
 					</form>
 				</div>
 				{% endfor %}
 			</div>
+			<div>
+				{% with messages = get_flashed_messages() %} {% if messages %}
+				<div class="notification is-danger">
+				  <span id="error-message">{{ messages[0] }}</span>
+				</div>
+				{% endif %} {% endwith %}
+			</div>
 			<div class="input_data">
-				<form action="/book_info/create" method="POST">
+				<form action="/book_info/{{ book.id }}/create" method="POST">
 					<div class="star">
 						<ul class="rate-area">
 							<input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5 stars</label>
