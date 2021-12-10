@@ -6,75 +6,82 @@
 <div class="book__info">
 	<div class="book__img-container">
 		<img class="book__img" src="../{{ book.image_path }}" alt="{{ book.name }}">
-		<div class="comments">
-			<div class="output_data">
-				{% for comment in comments %}
-				<div>
-					이름 : {{ comment.username }} 별 : {{ comment.star }}
+		<div class="input_data">
+			<form action="/book_info/{{ book.id }}/create" method="POST">
+				<div class="star">
+					<ul class="rate-area">
+						<input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5 stars</label>
+						<input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4 stars</label>
+						<input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3 stars</label>
+						<input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2 stars</label>
+						<input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1 star</label>
+					</ul>
 				</div>
-				<div>
-					{{ comment.body }}
+				<textarea class="comment" type="text" name="body" required> </textarea>
+				<button class="comment__btn" type="submit" name="id" value="{{ book.id }}" >댓글 달기</button>
+			</form>
+			<div>
+				{% with messages = get_flashed_messages() %} {% if messages %}
+				<div class="notification is-danger">
+				  <div id="error-message">{{ messages[0] }}</div>
 				</div>
-				<div>
-					<form action="/book_info/update" method="POST">
-						<button name="edit" value={{ book.id }}>수정</button>
-					</form>
-					<form action="/book_info/delete" method="POST">
-						<button name="delete" value={{ book.id }}>삭제</button>
-					</form>
-				</div>
-				{% endfor %}
-			</div>
-			<div class="input_data">
-				<form action="/book_info/create" method="POST">
-					<div class="star">
-						<ul class="rate-area">
-							<input type="radio" id="5-star" name="rating" value="5" /><label for="5-star" title="Amazing">5 stars</label>
-							<input type="radio" id="4-star" name="rating" value="4" /><label for="4-star" title="Good">4 stars</label>
-							<input type="radio" id="3-star" name="rating" value="3" /><label for="3-star" title="Average">3 stars</label>
-							<input type="radio" id="2-star" name="rating" value="2" /><label for="2-star" title="Not Good">2 stars</label>
-							<input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" title="Bad">1 star</label>
-						</ul>
-					</div>
-					<textarea class="comment" type="text" name="body"> </textarea>
-					<button class="comment__btn" type="submit" name="id" value="{{ book.id }}" >댓글 달기</button>
-				</form>
+				{% endif %} {% endwith %}
 			</div>
 		</div>
+		</div>
+		<div class="book__info__contents">
+				<div class="book__category">
+					<h3 class="book__category__title">책이름</h3>
+					<h4 class="book__category__content">{{ book.name }}</h4>
+				</div>
+				<div class="book__category">
+					<h3 class="book__category__title">출판사</h3>
+					<h4 class="book__category__content">{{ book.publisher }}</h4>
+				</div>
+				<div class="book__category">
+					<h3 class="book__category__title">저자</h3>
+					<h4 class="book__category__content">{{ book.author }}</h4>
+				</div>
+				<div class="book__category">
+					<h3 class="book__category__title">출간일</h3>
+					<h4 class="book__category__content">{{ book.published_at }}</h4>
+				</div>
+				<div class="book__category">
+					<h3 class="book__category__title">페이지수</h3>
+					<h4 class="book__category__content">{{ book.page_count }}</h4>
+				</div>
+				<div class="book__category">
+					<h3 class="book__category__title">ISBN</h3>
+					<h4 class="book__category__content">{{ book.isbn }}</h4>
+				</div>
+			<div class="book__category">
+			<h3 class="book__category__title">책소개</h3>
+			<h4 class="book__category__content">
+				{{ book.description }}
+			</h4>
+		</div>
+		</div>
 	</div>
-	<div class="book__info__contents">
-			<div class="book__category">
-				<h3 class="book__category__title">책이름</h3>
-				<h4 class="book__category__content">{{ book.name }}</h4>
+	<div class="comments">
+
+		{% for comment in comments %}
+		<div class="comments__content">
+			<div class="comments__content__header">
+				<div class="comments__content__info">
+					<div class="comments_content__info__item border">[ NAME ]</div> <div class="comments_content__info__item border">{{ comment.username }}</div>			
+					<div class="comments_content__info__item border">[ RATING ]</div> <div class="comments_content__info__item">{{ comment.star }}</div>
+				</div>
+				<form action="/book_info/{{book.id}}/delete/{{comment.id}}" method="POST">
+					<button class="comments_delete">삭제</button>
+				</form>
 			</div>
-			<div class="book__category">
-				<h3 class="book__category__title">출판사</h3>
-				<h4 class="book__category__content">{{ book.publisher }}</h4>
+			<div class="comments__content__body">
+				{{ comment.body }}
 			</div>
-			<div class="book__category">
-				<h3 class="book__category__title">저자</h3>
-				<h4 class="book__category__content">{{ book.author }}</h4>
-			</div>
-			<div class="book__category">
-				<h3 class="book__category__title">출간일</h3>
-				<h4 class="book__category__content">{{ book.published_at }}</h4>
-			</div>
-			<div class="book__category">
-				<h3 class="book__category__title">페이지수</h3>
-				<h4 class="book__category__content">{{ book.page_count }}</h4>
-			</div>
-			<div class="book__category">
-				<h3 class="book__category__title">ISBN</h3>
-				<h4 class="book__category__content">{{ book.isbn }}</h4>
-			</div>
-		<div class="book__category">
-		<h3 class="book__category__title">책소개</h3>
-		<h4 class="book__category__content">
-			{{ book.description }}
-		</h4>
-	</div>
-	</div>
-	
+		</div>
+		{% endfor %}
+
+
 </div>
 
 {% endblock %}

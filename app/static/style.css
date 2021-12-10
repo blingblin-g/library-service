@@ -17,6 +17,17 @@ button {
 	border: none;
 }
 
+.notification {
+	margin: 5px;
+	padding: 20px;
+	background-color: white;
+	border: 2px dotted black;
+	border-radius: 20px;
+	color: black;
+	font-weight: bold;
+	text-align: center;
+}
+
 /*main page*/
 
 
@@ -95,6 +106,12 @@ button {
 	background-color: black;
 	color:white;
 }
+
+.rate-area {
+	margin-left: 0;
+	padding: 0px;
+}
+
 
 /*login page*/
 
@@ -192,6 +209,10 @@ button {
 	align-items: center;
 }
 
+.book__img-container {
+	width: 30%;
+}
+
 .book__img {
 	width: 20em;
 	height: 25em;
@@ -199,7 +220,7 @@ button {
 
 .book__category {
 	display: flex;
-	width: 500px;
+	width: 100%;
 }
 
 .book__category__title {
@@ -215,21 +236,69 @@ button {
 	font-weight: 500;
 }
 
+.comments {
+	width: 50%;
+}
+
 .comment {
-	width: 30em;
+	width: 70%;
+	height: 50px;
 }
 
 .comment__btn {
-	background-color: gray;
+	background-color: #424242;
 	border-radius: 10px;
 	width: 50px;
 	height: 50px;
-	transform: translateY(-20px);
+	color: white;
+	transform: translateY(-30px);
 }
 
 .comment__btn:hover {
 	background-color: black;
 	color: white;
+}
+
+.comments__content {
+	margin: 20px;
+	padding: 10px;
+	width: 70%;
+	border: 1px solid #424242;
+	border-radius: 15px;
+}
+
+.comments__content__header {
+	display: flex;
+	width: 100%;
+}
+
+.comments__content__info {
+	display: flex;
+	justify-content: space-between;
+	width: 75%;
+	padding: 15px;
+	/* border: 1px solid #424242; */
+	border-radius: 10px;
+
+}
+
+.comments_delete {
+	width: 50px;
+	margin-left: 20%;
+	height: 50px;
+	background-color: #424242;
+	color: white;
+	border-radius: 10px;
+}
+
+
+.comments__content__body {
+	/* border: 1px solid #424242; */
+	border-radius: 10px;
+	padding: 15px;
+	margin-top: 15px;
+	width: 95%;
+
 }
 
 
