@@ -22,7 +22,7 @@ def book_info(id):
 	return render_template('book_info.html', book=book, comments=comments)
 
 def error_handling(body, star):
-	if body is None:
+	if body is None or len(body) <= 1:
 		return '내용을 입력해주세요.'
 	elif star is None:
 		return '평점을 입력해주세요.'
@@ -39,7 +39,7 @@ def create_comment(id):
 		flash("이미 댓글을 달았습니다!")
 		return (redirect(url_for('book_info.book_info', id=id)))
 
-	body = request.form['body']
+	body = request.form.get('body').strip()
 	star = request.form.get('rating')
 	error = error_handling(body, star)
 	if error:
